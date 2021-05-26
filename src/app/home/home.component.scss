@@ -1,0 +1,64 @@
+#mainContainer {
+    margin: 6rem;
+    width: 50vw;
+
+    form {
+        width: 80%;
+
+        input {
+            border: 1px black solid;
+            border-radius: 3px;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+    }
+
+    .tableContainer {
+        margin-top: 0.5rem;
+        table {
+            border: 1px gray solid;
+            width: 80%;
+        
+            th {
+                text-align: left;
+                background-color: #6e6e6e;
+                color: white;
+                border: 1px solid #ddd;
+                padding: 8px;
+                width: 10vw;
+            }
+        
+            td {
+                border: 1px solid #ddd;
+                padding: 8px;
+              }
+        
+              #actionsColumn {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+        
+                  button {
+                      border-radius: 5px;
+                      background-color: #6e6e6e;
+                      color: white;
+                      padding: 0.5rem 0.7rem;
+                      box-shadow: none !important;
+                      cursor: pointer;
+                      margin-right: 0.5rem;
+                  }
+        
+                  button:last-child {
+                      margin-right: 0;
+                  }
+              }
+        }
+    }
+
+}

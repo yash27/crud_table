@@ -1,0 +1,43 @@
+<div id="mainContainer">
+    <form #detailsForm="ngForm" (ngSubmit)="addDetails(detailsForm)">
+        <input #title name="title" [(ngModel)]="model.title" type="text" placeholder="Enter Title" required>
+        <input #author name="author" type="text" [(ngModel)]="model.author" placeholder="Enter Author" required>
+        <input #price name="price" type="number" [(ngModel)]="model.price" placeholder="Enter Price" required>
+        <button [disabled]="detailsForm.invalid">Add</button>
+    </form>
+    <p *ngIf="data.length === 0">Table is Empty</p>
+    <div class="tableContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entry of data; index as i">
+                    <td>
+                        <span *ngIf="!entry.isEditing">{{entry.title}}</span>
+                        <input *ngIf="entry.isEditing" type="text" [(ngModel)]="entry.title">
+                    </td>
+                    <td>
+                        <span *ngIf="!entry.isEditing">{{entry.author}}</span>
+                        <input *ngIf="entry.isEditing" type="text" [(ngModel)]="entry.author">
+                    </td>
+                    <td>
+                        <span *ngIf="!entry.isEditing">{{entry.price}}</span>
+                        <input *ngIf="entry.isEditing" type="number" [(ngModel)]="entry.price">
+                    </td>
+                    <td id="actionsColumn">
+                        <button *ngIf="entry.isEditing" (click)="saveDetails(entry)">Save</button>
+                        <button *ngIf="!entry.isEditing" (click)="editDetails(entry)">Edit</button>
+                        <button *ngIf="!entry.isEditing" [routerLink]="['/', entry.title]">View</button>
+                        <button *ngIf="!entry.isEditing" (click)="removeDetails(i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
